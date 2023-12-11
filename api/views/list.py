@@ -14,9 +14,9 @@ class List(APIView):
         model = apps.get_model(app, model_name=model)
         serializer = model_serializer_factory(model)
 
-        qs = model.objects.all()
+        qs = model.objects.all()[:10]
         serialized = serializer(qs, many=True)
 
         #meta = self.metadata_class()
         #data = meta.get_serializer_info(serialized)
-        return Response({'status': 'success', 'data': serialized.data[:10]}, status=status.HTTP_200_OK)
+        return Response({'status': 'success', 'data': serialized.data}, status=status.HTTP_200_OK)
