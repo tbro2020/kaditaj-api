@@ -19,4 +19,4 @@ class List(APIView):
 
         #meta = self.metadata_class()
         #data = meta.get_serializer_info(serialized)
-        return Response({'status': 'success', 'data': serialized.data}, status=status.HTTP_200_OK)
+        return Response({'status': 'success', 'data': serialized.data[:20]}, status=status.HTTP_200_OK)
